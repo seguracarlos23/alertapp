@@ -9,6 +9,8 @@ import { TiposComponent } from './components/tipos/tipos.component';
 import { ActuaComponent } from './components/actua/actua.component';
 import { MapaComponent } from './components/mapa/mapa.component';
 import { MaltratoComponent } from './components/maltrato/maltrato.component';
+import { HacerComponent } from './components/hacer/hacer.component';
+import { AcordionComponent } from './components/acordion/acordion.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { MaltratoComponent } from './components/maltrato/maltrato.component';
     TiposComponent,
     ActuaComponent,
     MapaComponent,
-    MaltratoComponent
+    MaltratoComponent,
+    HacerComponent,
+    AcordionComponent
   ],
   imports: [
     BrowserModule,
