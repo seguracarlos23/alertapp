@@ -11,6 +11,11 @@ import { MapaComponent } from './components/mapa/mapa.component';
 import { MaltratoComponent } from './components/maltrato/maltrato.component';
 import { HacerComponent } from './components/hacer/hacer.component';
 import { AcordionComponent } from './components/acordion/acordion.component';
+import { RegistrosComponent } from './components/registros/registros.component';
+import { FormComponent } from './components/form/form.component';
+import { ButtonComponent } from './components/button/button.component';
+import { ErrorComponent } from './components/error/error.component';
+import { InputComponent } from './components/input/input.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,12 @@ import { AcordionComponent } from './components/acordion/acordion.component';
     MapaComponent,
     MaltratoComponent,
     HacerComponent,
-    AcordionComponent
+    AcordionComponent,
+    RegistrosComponent,
+    FormComponent,
+    ButtonComponent,
+    ErrorComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,
