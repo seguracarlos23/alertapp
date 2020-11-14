@@ -19,6 +19,7 @@ import { InputComponent } from './components/input/input.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { PerfilComponent } from './components/perfil/perfil.component';
     ButtonComponent,
     ErrorComponent,
     InputComponent,
-    PerfilComponent
+    PerfilComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,7 @@ import { PerfilComponent } from './components/perfil/perfil.component';
     HttpClientModule,
     AppRoutingModule
 
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,63 @@
+<div class="bg"
+		 style="background: linear-gradient(rgba(0,0,0,.75) ,rgba(0,0,0,.75)) , url(./assets/img/carousel2.jpg) no-repeat center/cover;">
+	<div class="container d-flex justify-content-center align-items-center"
+			 style="height: 100vh; ">
+		<div style="max-width: 22rem; width: 100%;" class="card  radio-light">
+			<div class="card-header text-uppercase text-center p-3 ">
+				<img src="./assets/img/iniciar-sesion.svg" class="img-fluid w-25" alt="">
+				<h3 class="font-weight-bold mt-3">iniciar sesion</h3>
+			</div>
+			<div class="card-body p-4">
+				<form [formGroup]="formlogin" *ngIf="this.formlogin">
+					<div class="form-group">
+						<label for="">Identificacion:</label>
+						<input formControlName="identification" type="text" class="form-control" (keyup)="validateUserExists()" />
+						<div class="error alert-danger p-2 mt-1"
+								 *ngIf="formlogin.controls['identification'].touched && formlogin.controls['identification'].errors?.required">
+							Favor completa este campo
+						</div>
+						<div class="error alert-danger p-2 mt-1"
+								 *ngIf="formlogin.controls['identification'].touched && !existsUser">
+							No existe identification registrada
+						</div>
+					</div>
+					<div class="form-group mb-4">
+						<label for="">Clave:</label>
+						<input formControlName="password" type="password" class="form-control" />
+						<div class="error alert-danger p-2 mt-1"
+								 *ngIf="formlogin.controls['password'].touched && formlogin.controls['password'].errors?.required">
+							Favor completa este campo
+						</div>
+					</div>
+					<button class="btn btn-primary d-block w-100 mt-4" type="button" [disabled]="formlogin.invalid"
+									(click)="validateCredentials()">
+						Iniciar sesion
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 
+
+  
+  
+     
+ 
+  
+     <div class="error" *ngIf="formlogin.controls['identification'].touched && searching === false">
+    Ya existe
+   </div> 
+  </div>
+  <div class="form-group mb-4">
+   <label for="">Clave:</label>
+   <input formControlName="password" type="password" />
+     <div class="error" *ngIf="formlogin.controls['password'].touched && formlogin.controls['password'].errors?.required">
+    Favor completa este campo
+   </div> 
+  </div>
+   <button class="button" type="button" [disabled]="formlogin.invalid" (click)="register()">
+   Iniciar sesion
+  </button> 
+ </form>
+</div> -->
