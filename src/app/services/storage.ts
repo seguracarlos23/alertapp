@@ -10,7 +10,7 @@ export class storage {
   return window.localStorage.getItem("users");
  }
 
- validateUserExists(identification: number): object {
+ validateUserExists(identification: number): users {
   let dataUsers: Array<users> = JSON.parse(window.localStorage.getItem("users"));
   return dataUsers.find((element) => element.identification === identification);
  }

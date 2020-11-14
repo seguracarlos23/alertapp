@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
   }
   validateCredentials() {
     let { password } = this.validateUserExists() ?? {};
+
     if (password !== this.formlogin.controls['password'].value.trim())
       Swal.fire(
         'Error',
