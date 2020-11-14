@@ -5,7 +5,7 @@ import { HacerComponent } from './components/hacer/hacer.component';
 import { MaltratoComponent } from './components/maltrato/maltrato.component';
 import { MapaComponent } from './components/mapa/mapa.component';
 import { TiposComponent } from './components/tipos/tipos.component';
-
+import { RegistrosComponent } from './components/registros/registros.component';
 const routes: Routes = [
   { path: '', component: MaltratoComponent },
   { path: 'tipos-maltrato', component: TiposComponent },
