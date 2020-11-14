@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { session } from 'src/app/services/session';
 
 @Component({
   selector: 'app-mapa',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    if (!session.getSesion())
+      this.router.navigate(['login']);
   }
 
 }

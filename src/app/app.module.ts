@@ -18,6 +18,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { InputComponent } from './components/input/input.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,10 @@ import { HttpClientModule } from '@angular/common/http';
     FormComponent,
     ButtonComponent,
     ErrorComponent,
-    InputComponent
+    InputComponent,
+    LoginComponent
+
+
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     AppRoutingModule
 
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
