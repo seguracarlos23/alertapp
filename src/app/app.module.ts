@@ -18,6 +18,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { InputComponent } from './components/input/input.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { PerfilComponent } from './components/perfil/perfil.component';
 import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
@@ -36,9 +37,8 @@ import { LoginComponent } from './components/login/login.component';
     ButtonComponent,
     ErrorComponent,
     InputComponent,
+    PerfilComponent,
     LoginComponent
-
-
   ],
   imports: [
     BrowserModule,
