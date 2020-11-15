@@ -33,5 +33,6 @@ export class storage {
     user = dataUser;
    }
   });
+  window.localStorage.setItem("users", JSON.stringify(dataUsers, null, 2))
  }
 }
