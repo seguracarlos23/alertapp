@@ -22,15 +22,19 @@ export class LoginComponent implements OnInit {
       identification: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
-    this.dataStorage = new storage();
+
 
   }
 
   validateUserExists() {
-    this.existsUser = this.dataStorage.validateUserExists(+this.formlogin.controls['identification'].value.trim()) ? true : false;
-    return this.dataStorage.validateUserExists(+this.formlogin.controls['identification'].value.trim());
+    this.existsUser = storage.validateUserExists(this.formlogin.controls['identification'].value.trim()) ? true : false;
+    return storage.validateUserExists(this.formlogin.controls['identification'].value.trim());
   }
   validateCredentials() {
+
+
+
+
     let { password } = this.validateUserExists() ?? {};
 
     if (password !== this.formlogin.controls['password'].value.trim())
@@ -40,7 +44,7 @@ export class LoginComponent implements OnInit {
         'error'
       );
     else {
-      session.setSesion()
+      session.setSesion(this.formlogin.controls['identification'].value.trim())
       this.router.navigate(['']);
       window.location.reload();
     }

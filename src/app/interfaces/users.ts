@@ -1,9 +1,8 @@
 export interface users {
- identification: number;
- name: number;
+ identification: string;
+ name: string;
  password: string;
  phones: any[];
  emails: any[];
  address: object;
-
 }

@@ -1,7 +1,7 @@
 <div class="bg"
-		 style="background: linear-gradient(rgba(0,0,0,.75) ,rgba(0,0,0,.75)) , url(./assets/img/carousel2.jpg) no-repeat center/cover;">
+	 style="background: linear-gradient(rgba(0,0,0,.75) ,rgba(0,0,0,.75)) , url(./assets/img/carousel2.jpg) no-repeat center/cover;">
 	<div class="container d-flex justify-content-center align-items-center"
-			 style="height: 100vh; ">
+		 style="height: 100vh; ">
 		<div style="max-width: 22rem; width: 100%;" class="card  radio-light">
 			<div class="card-header text-uppercase text-center p-3 ">
 				<img src="./assets/img/iniciar-sesion.svg" class="img-fluid w-25" alt="">
@@ -11,28 +11,34 @@
 				<form [formGroup]="formlogin" *ngIf="this.formlogin">
 					<div class="form-group">
 						<label for="">Identificacion:</label>
-						<input formControlName="identification" type="text" class="form-control" (keyup)="validateUserExists()" />
+						<input formControlName="identification" type="text" class="form-control"
+							   (keyup)="validateUserExists()" />
 						<div class="error alert-danger p-2 mt-1"
-								 *ngIf="formlogin.controls['identification'].touched && formlogin.controls['identification'].errors?.required">
+							 *ngIf="formlogin.controls['identification'].touched && formlogin.controls['identification'].errors?.required">
 							Favor completa este campo
 						</div>
 						<div class="error alert-danger p-2 mt-1"
-								 *ngIf="formlogin.controls['identification'].touched && !existsUser">
+							 *ngIf="formlogin.controls['identification'].dirty && !existsUser">
 							No existe identification registrada
+						</div>
+						<div class="error alert-danger p-2 mt-1"
+							 *ngIf="formlogin.controls['identification'].dirty && formlogin.controls['identification'].value.length < 7">
+							Identificacion debe tener mas de 6 caracteres
 						</div>
 					</div>
 					<div class="form-group mb-4">
 						<label for="">Clave:</label>
 						<input formControlName="password" type="password" class="form-control" />
 						<div class="error alert-danger p-2 mt-1"
-								 *ngIf="formlogin.controls['password'].touched && formlogin.controls['password'].errors?.required">
+							 *ngIf="formlogin.controls['password'].touched && formlogin.controls['password'].errors?.required">
 							Favor completa este campo
 						</div>
 					</div>
 					<button class="btn btn-primary d-block w-100 mt-4" type="button" [disabled]="formlogin.invalid"
-									(click)="validateCredentials()">
+							(click)="validateCredentials()">
 						Iniciar sesion
 					</button>
+					Si no tienes una cuenta registrate<a routerLink="/registro"> aqui</a>
 				</form>
 			</div>
 		</div>

@@ -7,15 +7,15 @@ import { MaltratoComponent } from './components/maltrato/maltrato.component';
 import { MapaComponent } from './components/mapa/mapa.component';
 import { TiposComponent } from './components/tipos/tipos.component';
 import { RegistrosComponent } from './components/registros/registros.component';
-import {PerfilComponent } from './components/perfil/perfil.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 const routes: Routes = [
   { path: '', component: MaltratoComponent },
   { path: 'tipos-maltrato', component: TiposComponent },
   { path: 'actua', component: ActuaComponent },
   { path: 'mapa', component: HacerComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'perfil', component: PerfilComponent},
-
+  { path: 'perfil', component: PerfilComponent },
+  { path: 'registro', component: RegistrosComponent }
 ];
 
 @NgModule({
