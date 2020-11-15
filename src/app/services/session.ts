@@ -11,4 +11,8 @@ export class session {
  static getUserSesion() {
   return window.sessionStorage.getItem("user");
  }
+ static logout() {
+  window.sessionStorage.removeItem("user");
+  window.sessionStorage.removeItem("session");
+ }
 }

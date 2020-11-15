@@ -14,8 +14,6 @@ export class storage {
   return (this.getDataUsers() ?? []).find((user) => user.identification === identification);
  }
  static createUser(newUser: users) {
-  console.log(newUser);
-  console.log((this.getDataUsers() ?? []));
   let dataUsers = (this.getDataUsers() ?? [])
   dataUsers.push(newUser);
 
@@ -28,9 +26,11 @@ export class storage {
 
  static editUser(dataUser: users) {
   let dataUsers: Array<users> = (this.getDataUsers() ?? []);
-  dataUsers.forEach((user) => {
+  dataUsers.forEach((user, index) => {
    if (user.identification === dataUser.identification) {
-    user = dataUser;
+    console.log(user.identification);
+    dataUsers[index] = dataUser;
+    console.log(dataUsers);
    }
   });
   window.localStorage.setItem("users", JSON.stringify(dataUsers, null, 2))

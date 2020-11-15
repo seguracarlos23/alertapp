@@ -44,18 +44,19 @@ export class PerfilComponent implements OnInit {
   validateData() {
     let dataUser: users = {
       identification: this.formperfil.controls['identification'].value,
-      name: `${this.formperfil.controls['name'].value} ${this.formperfil.controls['surname'].value}`,
+      name: `${this.formperfil.controls['name'].value} `,
       phone: [this.formperfil.controls['phone'].value, this.formperfil.controls['cellphone'].value],
       email: [this.formperfil.controls['email'].value],
       password: this.formperfil.controls['password'].value,
       address: this.formperfil.controls['address'].value
     }
-    storage.createUser(dataUser);
+    storage.editUser(dataUser);
     Swal.fire(
       'Exito',
       'Datos guardados exitosamente',
       'success'
     );
+    this.router.navigate(['perfil']);
   }
 
 }
