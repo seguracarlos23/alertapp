@@ -33,6 +33,7 @@ export class PerfilComponent implements OnInit {
       this.router.navigate(['login']);
     this.user = storage.getDataUser(session.getUserSesion());
     this.entries = Object.entries(this.user)
+    this.entries = this.entries.filter(([key]) => key !== 'password');
     this.formperfil.controls['identification'].setValue(this.user.identification);
     this.formperfil.controls['name'].setValue(this.user.name);
     this.formperfil.controls['password'].setValue(this.user.password);
