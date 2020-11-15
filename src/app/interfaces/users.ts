@@ -2,7 +2,7 @@ export interface users {
  identification: string;
  name: string;
  password: string;
- phones: any[];
- emails: any[];
+ phone: any[];
+ email: any[];
  address: object;
 }

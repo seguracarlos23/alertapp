@@ -26,5 +26,12 @@ export class storage {
   return dataUsers.find((element) => element.identification === identification);
  }
 
-
+ static editUser(dataUser: users) {
+  let dataUsers: Array<users> = (this.getDataUsers() ?? []);
+  dataUsers.forEach((user) => {
+   if (user.identification === dataUser.identification) {
+    user = dataUser;
+   }
+  });
+ }
 }

@@ -1,8 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { users } from 'src/app/interfaces/users';
 import { session } from 'src/app/services/session';
 import { storage } from 'src/app/services/storage';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-perfil',
@@ -12,16 +15,47 @@ import { storage } from 'src/app/services/storage';
 export class PerfilComponent implements OnInit {
   user: users;
   entries
-
-  constructor(private router: Router) { }
+  formperfil: FormGroup;
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router) {
+    this.formperfil = this.formBuilder.group({
+      identification: [''],
+      password: [''],
+      name: ['', [Validators.required]],
+      phone: [''],
+      cellphone: [''],
+      address: [''],
+      email: ['', [Validators.email, Validators.required]]
+    });
+  }
 
   ngOnInit(): void {
     if (!session.getSesion())
       this.router.navigate(['login']);
     this.user = storage.getDataUser(session.getUserSesion());
-    console.log(this.user);
     this.entries = Object.entries(this.user)
+    this.formperfil.controls['identification'].setValue(this.user.identification);
+    this.formperfil.controls['name'].setValue(this.user.name);
+    this.formperfil.controls['password'].setValue(this.user.password);
+    this.formperfil.controls['phone'].setValue(this.user.phone[0]);
+    this.formperfil.controls['cellphone'].setValue(this.user.phone[1]);
+    this.formperfil.controls['address'].setValue(this.user.address);
+    this.formperfil.controls['email'].setValue(this.user.email[0]);
   }
-
+  validateData() {
+    let dataUser: users = {
+      identification: this.formperfil.controls['identification'].value,
+      name: `${this.formperfil.controls['name'].value} ${this.formperfil.controls['surname'].value}`,
+      phone: [this.formperfil.controls['phone'].value, this.formperfil.controls['cellphone'].value],
+      email: [this.formperfil.controls['email'].value],
+      password: this.formperfil.controls['password'].value,
+      address: this.formperfil.controls['address'].value
+    }
+    storage.createUser(dataUser);
+    Swal.fire(
+      'Exito',
+      'Datos guardados exitosamente',
+      'success'
+    );
+  }
 
 }

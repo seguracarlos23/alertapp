@@ -40,8 +40,8 @@ export class RegistrosComponent implements OnInit {
     let newUser: users = {
       identification: this.formregistro.controls['identification'].value,
       name: `${this.formregistro.controls['name'].value} ${this.formregistro.controls['surname'].value}`,
-      phones: [this.formregistro.controls['phone'].value, this.formregistro.controls['cellphone'].value],
-      emails: [this.formregistro.controls['email'].value],
+      phone: [this.formregistro.controls['phone'].value, this.formregistro.controls['cellphone'].value],
+      email: [this.formregistro.controls['email'].value],
       password: this.formregistro.controls['password'].value,
       address: this.formregistro.controls['address'].value
     }
