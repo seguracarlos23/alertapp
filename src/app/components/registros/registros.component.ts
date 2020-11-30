@@ -12,8 +12,8 @@ import Swal from 'sweetalert2';
   templateUrl: './registros.component.html',
   styleUrls: ['./registros.component.scss']
 })
-export class RegistrosComponent implements OnInit {
 
+export class RegistrosComponent implements OnInit {
   formregistro: FormGroup;
   dataStorage: storage;
   existsUser: boolean;
@@ -32,9 +32,9 @@ export class RegistrosComponent implements OnInit {
 
   }
 
-  validateUserExists() {
-    this.existsUser = storage.validateUserExists(this.formregistro.controls['identification'].value.trim()) ? true : false;
-    return storage.validateUserExists(this.formregistro.controls['identification'].value.trim());
+  async validateUserExists() {
+     this.existsUser = await storage.getDataUser(this.formregistro.controls['identification'].value.trim()) ? true : false;
+     return await storage.getDataUser(this.formregistro.controls['identification'].value.trim());
   }
   validateData() {
     let newUser: users = {

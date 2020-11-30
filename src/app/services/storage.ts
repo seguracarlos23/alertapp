@@ -1,38 +1,50 @@
 import { users } from '../interfaces/users';
+import {Component, OnInit} from '@angular/core';
+import { Injectable } from "@angular/core";
+import {HttpClient} from "@angular/common/http";
 
+
+@Injectable({
+ providedIn: 'root'
+})
 
 export class storage {
 
-
- constructor() {
-
- }
+ 
+ 
+ constructor() {  }
  static getDataUsers(): Array<users> {
   return JSON.parse(window.localStorage.getItem("users"));
  }
- static getDataUser(identification: string): users {
+ /*static getDataUser(identification: string): users {
   return (this.getDataUsers() ?? []).find((user) => user.identification === identification);
- }
- static createUser(newUser: users) {
-  let dataUsers = (this.getDataUsers() ?? [])
-  dataUsers.push(newUser);
+ }*/
+  static async createUser(newUser: users) {
 
-  window.localStorage.setItem("users", JSON.stringify(dataUsers, null, 2))
+   await fetch('http://127.0.0.1:5000/createUser',{
+    method: 'POST', 
+    headers: {
+     'Content-Type': 'application/json'
+    },
+   body: JSON.stringify(newUser)
+   })
  }
- static validateUserExists(identification: string): users {
+ static async getDataUser(identification: string): Promise<users> {
+  const response= await fetch(`http://127.0.0.1:5000/findUser/${identification}`);  
+  const data:users = await response.json();  
+  return  Object.keys(data).length ? data : undefined;
+  /*
   let dataUsers: Array<users> = this.getDataUsers() ?? [];
-  return dataUsers.find((element) => element.identification === identification);
+  return dataUsers.find((element) => element.identification === identification);*/
  }
 
- static editUser(dataUser: users) {
-  let dataUsers: Array<users> = (this.getDataUsers() ?? []);
-  dataUsers.forEach((user, index) => {
-   if (user.identification === dataUser.identification) {
-    console.log(user.identification);
-    dataUsers[index] = dataUser;
-    console.log(dataUsers);
-   }
-  });
-  window.localStorage.setItem("users", JSON.stringify(dataUsers, null, 2))
+ static async editUser(dataUser: users) {
+  await fetch('http://127.0.0.1:5000/editUser',{
+    method: 'PUT', 
+    headers: {
+     'Content-Type': 'application/json'
+    },
+   body: JSON.stringify(dataUser)
+   })
  }
 }

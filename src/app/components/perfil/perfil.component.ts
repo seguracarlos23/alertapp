@@ -28,10 +28,10 @@ export class PerfilComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+   async ngOnInit(): Promise<users> {
     if (!session.getSesion())
       this.router.navigate(['login']);
-    this.user = storage.getDataUser(session.getUserSesion());
+    this.user = await storage.getDataUser(session.getUserSesion());
     this.entries = Object.entries(this.user)
     this.entries = this.entries.filter(([key]) => key !== 'password');
     this.formperfil.controls['identification'].setValue(this.user.identification);
@@ -41,6 +41,7 @@ export class PerfilComponent implements OnInit {
     this.formperfil.controls['cellphone'].setValue(this.user.phone[1]);
     this.formperfil.controls['address'].setValue(this.user.address);
     this.formperfil.controls['email'].setValue(this.user.email[0]);
+    return;
   }
   validateData() {
     let dataUser: users = {

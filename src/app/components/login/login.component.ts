@@ -26,17 +26,18 @@ export class LoginComponent implements OnInit {
 
   }
 
-  validateUserExists() {
-    this.existsUser = storage.validateUserExists(this.formlogin.controls['identification'].value.trim()) ? true : false;
-    return storage.validateUserExists(this.formlogin.controls['identification'].value.trim());
+  async validateUserExists() {
+    this.existsUser =  await storage.getDataUser(this.formlogin.controls['identification'].value.trim()) ? true : false;
+    const data: users | Promise<users>= await storage.getDataUser(this.formlogin.controls['identification'].value.trim());
+    console.log(data);
+    return data;
   }
-  validateCredentials() {
+  
+  async validateCredentials() {
 
-
-
-
-    let { password } = this.validateUserExists() ?? {};
-
+    let { password }:any = await this.validateUserExists() ?? {};
+    console.log(password,5);
+    
     if (password !== this.formlogin.controls['password'].value.trim())
       Swal.fire(
         'Error',
