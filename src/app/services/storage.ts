@@ -21,7 +21,7 @@ export class storage {
  }*/
   static async createUser(newUser: users) {
 
-   await fetch('http://127.0.0.1:5000/createUser',{
+   await fetch('https://shrouded-thicket-66753.herokuapp.com/createUser',{
     method: 'POST', 
     headers: {
      'Content-Type': 'application/json'
@@ -30,7 +30,7 @@ export class storage {
    })
  }
  static async getDataUser(identification: string): Promise<users> {
-  const response= await fetch(`http://127.0.0.1:5000/findUser/${identification}`);  
+  const response= await fetch(`https://shrouded-thicket-66753.herokuapp.com/findUser/${identification}`);  
   const data:users = await response.json();  
   return  Object.keys(data).length ? data : undefined;
   /*
@@ -39,7 +39,7 @@ export class storage {
  }
 
  static async editUser(dataUser: users) {
-  await fetch('http://127.0.0.1:5000/editUser',{
+  await fetch('https://shrouded-thicket-66753.herokuapp.com/editUser',{
     method: 'PUT', 
     headers: {
      'Content-Type': 'application/json'

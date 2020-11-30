@@ -19,7 +19,7 @@ static marker=null;
     if (!session.getSesion())
       this.router.navigate(['login']);
 
-      fetch('http://localhost:5000/getPlaces/')
+      fetch('https://shrouded-thicket-66753.herokuapp.com/getPlaces/')
       .then(function(response){
         return response.json()
       })
