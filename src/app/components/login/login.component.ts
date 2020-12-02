@@ -32,12 +32,12 @@ export class LoginComponent implements OnInit {
     console.log(data);
     return data;
   }
-  
+
   async validateCredentials() {
 
     let { password }:any = await this.validateUserExists() ?? {};
     console.log(password,5);
-    
+
     if (password !== this.formlogin.controls['password'].value.trim())
       Swal.fire(
         'Error',
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
     else {
       session.setSesion(this.formlogin.controls['identification'].value.trim())
       this.router.navigate(['']);
-      window.location.reload();
+      // window.location.reload();
     }
   }
 

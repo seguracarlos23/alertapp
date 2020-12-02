@@ -40,7 +40,7 @@ static marker=null;
   const position:any = await this.getLocation();
   myCoords[0] = position.coords.longitude;
   myCoords[1] = position.coords.latitude;
-  mapboxgl.accessToken = 'pk.eyJ1Ijoid2Fsb3BleiIsImEiOiJjanVoYmh2YXYweTR1NDRtZnR4MWdkM3ZzIn0.o3lbqvuQ_uU18VX6drOTlA'; 
+  mapboxgl.accessToken = 'pk.eyJ1Ijoid2Fsb3BleiIsImEiOiJjanVoYmh2YXYweTR1NDRtZnR4MWdkM3ZzIn0.o3lbqvuQ_uU18VX6drOTlA';
   HacerComponent.map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v9',
@@ -57,7 +57,7 @@ static marker=null;
     }else{
       this.addMarker(HacerComponent.places[i])
     }
-    
+
   }
  }
 
@@ -65,16 +65,16 @@ static marker=null;
 
   let degtorad = 0.01745329;
   let radtodeg = 57.29577951;
-  let menor=9999999999; 
+  let menor=9999999999;
   let posPlaceMenor=0;
   for(let i=0;i<HacerComponent.places.length;i++){
 
-    var dlong = (myCoords[0] - HacerComponent.places[i].longitud);
-    var dvalue = (Math.sin(myCoords[1] * degtorad) * Math.sin(HacerComponent.places[i].latitud * degtorad))+ (Math.cos(myCoords[1] * degtorad) 
+    let dlong = (myCoords[0] - HacerComponent.places[i].longitud);
+    let dvalue = (Math.sin(myCoords[1] * degtorad) * Math.sin(HacerComponent.places[i].latitud * degtorad))+ (Math.cos(myCoords[1] * degtorad)
     * Math.cos(HacerComponent.places[i].latitud * degtorad) * Math.cos(dlong * degtorad));
-    var dd = Math.acos(dvalue) * radtodeg;
+    let dd = Math.acos(dvalue) * radtodeg;
 
-    var km = (dd * 111.302);
+    let km = (dd * 111.302);
     km = (km * 100)/100;
     if(km<menor){
       menor=km;
@@ -97,7 +97,7 @@ static marker=null;
       }else{
         coordPlace=ltlng
         color='#10ADDF'
-      }  
+      }
       HacerComponent.marker = new mapboxgl.Marker({ draggable: false, color: color })
         .setLngLat(coordPlace)
         .setPopup(new mapboxgl.Popup({ offset: 25 })
